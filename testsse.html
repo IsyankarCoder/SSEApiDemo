@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>SSE Mesajlar</h2>
+    <ul id="list"></ul>
+
+    <script>
+      const list = document.getElementById("list");
+      const evt = new EventSource("http://localhost:5119/sse");
+
+      evt.onmessage = (e) =>
+      {
+        const li = document.createElement("li");
+        li.textContent = e.data;
+        list?.appendChild(li);
+      };
+    </script>
+</body>
+</html>
